@@ -10,7 +10,9 @@ import {
   TrendingUp, 
   Flame,
   ChevronRight,
-  Heart
+  Heart,
+  Cpu,
+  Monitor
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -264,42 +266,174 @@ export const Dashboard: React.FC = () => {
         {/* Right 1 Col: telemetry status, quick statistics */}
         <div className="space-y-6">
           
-          {/* Pro Gaming Streak telemetry summary */}
-          <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-md space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-[#ffe600] flex items-center gap-2">
-              <Flame className="w-4 h-4 text-amber-400" />
-              <span>Vault Heat Index</span>
-            </h2>
+          {/* PREMIUM GLASSMORPHIC HARDWARE ENGINE CARD (HP VICTUS 15) */}
+          <div className="relative group overflow-hidden bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-md hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-950/20 transition-all duration-500">
+            
+            {/* Glossy gradient overlays */}
+            <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-cyan-500/10 via-emerald-500/5 to-transparent rounded-full filter blur-2xl pointer-events-none transition-all duration-500 group-hover:from-cyan-500/20 group-hover:via-emerald-500/10" />
+            
+            {/* Modern gaming chassis decoration */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 group-hover:opacity-100 group-hover:scale-x-110 transition-all duration-500" />
 
-            <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-850 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-slate-400">Total Investment</span>
-                <span className="text-xs font-mono font-bold text-[#ffe600]">{totalPlaytime} HR Hours</span>
+            {/* Header with Title and Gaming Ready Badge */}
+            <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-4">
+              <div>
+                <h3 className="text-xs font-mono font-black tracking-widest text-[#00f0ff] uppercase">Victus Engine</h3>
+                <h2 className="text-base font-black text-white tracking-tight uppercase mt-0.5">HP Victus 15 Rig</h2>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-slate-400">Average Game Size</span>
-                <span className="text-xs font-mono font-bold text-[#ffe600]">
+              
+              {/* Pulsating Gaming Ready badge */}
+              <span className="flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono font-black rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.15)] select-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse relative">
+                  <span className="absolute -inset-1 rounded-full bg-emerald-400 animate-ping opacity-75" />
+                </span>
+                <span>SYSTEM READY</span>
+              </span>
+            </div>
+
+            {/* Hardware Specifications Modules */}
+            <div className="space-y-4 pt-4">
+              
+              {/* CPU Section */}
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                    <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>CPU ENGINE</span>
+                  </span>
+                  <span className="text-slate-500 text-[10px] font-black uppercase">AMD Ryzen 7</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-200 uppercase font-sans">Ryzen 7 7445HS</span>
+                  <span className="text-[10px] font-mono font-black text-cyan-400">8C / 16T @ 4.0 GHz</span>
+                </div>
+                {/* Animated Capacity bar */}
+                <div className="space-y-1">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                    <div className="bg-gradient-to-r from-cyan-500 to-indigo-500 h-full rounded-full transition-all duration-700 w-[38%]" />
+                  </div>
+                  <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
+                    <span>Performance: 38% Active</span>
+                    <span>CORE TEMP: 58°C</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* GPU Section */}
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                    <Gamepad2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>GPU CORE</span>
+                  </span>
+                  <span className="text-slate-500 text-[10px] font-black uppercase">NVIDIA RTX</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-200 uppercase font-sans">RTX 3050 6GB GDDR6</span>
+                  <span className="text-[10px] font-mono font-black text-emerald-400">Ray Tracing active</span>
+                </div>
+                {/* Animated Capacity bar */}
+                <div className="space-y-1">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                    <div className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-700 w-[45%]" />
+                  </div>
+                  <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
+                    <span>Active load: 45%</span>
+                    <span>CORE TEMP: 62°C</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Memory RAM Section */}
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                    <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
+                    <span>SYSTEM MEMORY</span>
+                  </span>
+                  <span className="text-slate-500 text-[10px] font-black uppercase">16GB Dual Channel</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-200 uppercase font-sans">16GB DDR5 RAM</span>
+                  <span className="text-[10px] font-mono font-black text-amber-500">4800 MHz active</span>
+                </div>
+                {/* Animated Capacity bar */}
+                <div className="space-y-1">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                    <div className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full transition-all duration-700 w-[58%]" />
+                  </div>
+                  <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
+                    <span>Memory Allocation: 9.2 GB</span>
+                    <span>Available: 6.8 GB</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* SSD Storage Section */}
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                    <HardDrive className="w-3.5 h-3.5 text-fuchsia-400" />
+                    <span>Chassis storage</span>
+                  </span>
+                  <span className="text-slate-500 text-[10px] font-black uppercase">PCIe NVMe</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-200 uppercase font-sans">512GB NVMe SSD</span>
+                  <span className="text-[10px] font-mono font-black text-fuchsia-400">ULTRA HIGH SPEED M.2</span>
+                </div>
+                {/* Storage Capacity bar */}
+                <div className="space-y-1">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                    <div className="bg-gradient-to-r from-fuchsia-500 to-pink-500 h-full rounded-full transition-all duration-700 w-[72%]" />
+                  </div>
+                  <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
+                    <span>Used space: 368 GB</span>
+                    <span>FREE SPACE: 144 GB</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Display Refresh Section */}
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                    <Monitor className="w-3.5 h-3.5 text-violet-400" />
+                    <span>DISPLAY SOURCE</span>
+                  </span>
+                  <span className="text-slate-500 text-[10px] font-black uppercase">IPS LAPTOP PANEL</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-200 uppercase font-sans">15.6" Full HD 1080p</span>
+                  <span className="text-[10px] font-mono font-black text-violet-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+                    <span>144Hz Active Sync</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Core telemetry quick index */}
+          <div className="bg-slate-900/40 border border-[#1e293b]/65 rounded-2xl p-5 backdrop-blur-md space-y-3">
+            <h3 className="text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest leading-none">Telemetry index overview</h3>
+            <div className="bg-slate-950/50 rounded-xl p-3 border border-slate-850 text-xs font-mono text-slate-300 space-y-2">
+              <div className="flex justify-between">
+                <span className="text-slate-500">Platform type:</span>
+                <span className="font-bold text-slate-200 uppercase text-right">HP Victus LAPTOP</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Total Playtime:</span>
+                <span className="font-bold text-[#ffe600] text-right">{totalPlaytime} HRS</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Average Game Size:</span>
+                <span className="font-bold text-cyan-400 text-right">
                   {totalGames > 0 ? `${Math.round(totalStorage / totalGames)} GB` : '0 GB'}
                 </span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-slate-400">Current XP Tier</span>
-                <span className="text-xs font-mono font-bold text-[#ffe600]">TIER_IV_LEGEND</span>
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-[10px] font-mono font-bold text-slate-400 uppercase">
-                <span>XP Level Progression</span>
-                <span>{Math.min(100, Math.round(totalPlaytime / 1.5))}%</span>
-              </div>
-              <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-850">
-                <div 
-                  className="bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 h-full rounded-full transition-all duration-500" 
-                  style={{ width: `${Math.min(100, Math.round(totalPlaytime / 1.5))}%` }} 
-                />
-              </div>
-              <p className="text-[9px] font-mono text-slate-500 uppercase mt-1">Unlock Next level at 200 playtime hours</p>
             </div>
           </div>
 

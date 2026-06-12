@@ -121,19 +121,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             })}
           </nav>
 
-          {/* System Spec Quick Summary */}
-          <div className="mt-auto bg-slate-900/50 backdrop-blur-md border border-slate-800/60 p-4 rounded-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-500/5 to-transparent rounded-full" />
-            <span className="text-[10px] font-mono font-bold tracking-wider text-teal-400 uppercase">Hardware Engine</span>
-            <div className="mt-2 space-y-1 text-xs">
-              <p className="font-medium text-slate-350 line-clamp-1">RTX 4080 Super</p>
-              <p className="text-slate-500 text-[10px] font-mono">Status: Optimal temperature</p>
-            </div>
-            {/* Custom Interactive Power Bar */}
-            <div className="w-full h-1 bg-slate-800 rounded-full mt-3 overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full" style={{ width: '82%' }} />
-            </div>
-          </div>
         </aside>
 
         {/* Dynamic Visual Content */}

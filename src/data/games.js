@@ -11,14 +11,14 @@ export const games = [
     playtimeHours: 124,
     releaseYear: 2020,
     coverUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop',
-    notes: 'Running incredibly well since the 2.1 update. Night City looks breathtaking with path tracing enabled.',
+    notes: 'Running incredibly well since the 2.1 update. Night City looks beautiful with DLSS Quality and Ray Tracing on Medium.',
     isFavorite: true,
     addedDate: '2026-01-10',
-    fps: 82,
+    fps: 55,
     cpuTemp: '68°C',
-    gpuTemp: '74°C',
-    graphicsSettings: 'Ray Tracing Overdrive (DLSS Frame Gen)',
-    personalNotes: 'A masterpiece of visual design and open-world immersion. Phantom Liberty DLC is high-octane!'
+    gpuTemp: '71°C',
+    graphicsSettings: 'Medium-High Custom Mix (DLSS Quality)',
+    personalNotes: 'A masterpiece of visual design and open-world immersion. 6GB VRAM on the RTX 3050 is fully leveraged!'
   },
   {
     id: '2',
@@ -32,14 +32,14 @@ export const games = [
     playtimeHours: 48,
     releaseYear: 2021,
     coverUrl: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=600&auto=format&fit=crop',
-    notes: 'Incredible physics, gorgeous vistas of Mexico. Best with an Xbox controller.',
+    notes: 'Incredible physics, gorgeous vistas of Mexico. Runs incredibly smooth at 95 FPS on the 144Hz screen.',
     isFavorite: true,
     addedDate: '2026-01-15',
-    fps: 144,
+    fps: 95,
     cpuTemp: '62°C',
-    gpuTemp: '65°C',
-    graphicsSettings: 'Extreme preset (RT Ultra)',
-    personalNotes: 'My go-to comfort game. The weekly challenges keep me coming back for more custom tunes.'
+    gpuTemp: '64°C',
+    graphicsSettings: 'High Preset (DLSS Quality)',
+    personalNotes: 'My go-to comfort game. The Ryzen 7 handling physics flawlessly with no frame drops.'
   },
   {
     id: '3',
@@ -53,12 +53,12 @@ export const games = [
     playtimeHours: 35,
     releaseYear: 2021,
     coverUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=600&auto=format&fit=crop',
-    notes: 'Post-apocalyptic wilderness survival. Ride through hordes of freakers.',
+    notes: 'Post-apocalyptic wilderness survival. Runs solid at 80 FPS on High details.',
     isFavorite: false,
     addedDate: '2026-05-01',
-    fps: 90,
+    fps: 80,
     cpuTemp: '64°C',
-    gpuTemp: '68°C',
+    gpuTemp: '67°C',
     graphicsSettings: 'High Preset',
     personalNotes: 'The motorcycle maintenance and fuel mechanics are extremely satisfying and add high tension!'
   },
@@ -79,9 +79,9 @@ export const games = [
     addedDate: '2026-02-01',
     fps: 60,
     cpuTemp: '67°C',
-    gpuTemp: '70°C',
-    graphicsSettings: 'Maximum (60FPS Cap)',
-    personalNotes: 'Unbelievable sense of discovery. The Shadow of the Erdtree expansion is an absolute must-play.'
+    gpuTemp: '69°C',
+    graphicsSettings: 'High Preset (60FPS Frame Cap)',
+    personalNotes: 'Solid 60 FPS throughout. The Shadow of the Erdtree expansion is an absolute masterpiece on Ryzen 7.'
   },
   {
     id: '5',
@@ -98,11 +98,11 @@ export const games = [
     notes: 'The story of Arthur Morgan is unparalleled in emotional depth and maturity.',
     isFavorite: true,
     addedDate: '2026-02-15',
-    fps: 90,
-    cpuTemp: '70°C',
-    gpuTemp: '75°C',
-    graphicsSettings: 'Custom Ultra-High Mix (DLSS Quality)',
-    personalNotes: 'Unmatched level of detail. The wildlife rendering and active ecosystems are pure simulation magic.'
+    fps: 65,
+    cpuTemp: '68°C',
+    gpuTemp: '72°C',
+    graphicsSettings: 'Custom Medium-High Mix (DLSS Quality)',
+    personalNotes: 'Unmatched level of detail. The wildlife rendering and active ecosystems run great on Ryzen 7.'
   },
   {
     id: '6',
@@ -119,11 +119,11 @@ export const games = [
     notes: 'High-speed metal concert where you are the lead guitarist. Extremely satisfying gunplay.',
     isFavorite: false,
     addedDate: '2026-03-01',
-    fps: 240,
+    fps: 144,
     cpuTemp: '59°C',
-    gpuTemp: '63°C',
-    graphicsSettings: 'Ultra Nightmare Preset',
-    personalNotes: 'Pushing my 144Hz monitor to its absolute limit. Excellent optimization from id Software.'
+    gpuTemp: '61°C',
+    graphicsSettings: 'High-Ultra Mix Preset',
+    personalNotes: 'Pushing my 144Hz Victus monitor to its absolute limit. Perfect frame-pacing!'
   },
   {
     id: '7',
@@ -140,11 +140,11 @@ export const games = [
     notes: 'Amazing combination of story, visual art, audio, and fluid arcade combat.',
     isFavorite: false,
     addedDate: '2026-03-12',
-    fps: 240,
+    fps: 144,
     cpuTemp: '45°C',
     gpuTemp: '48°C',
     graphicsSettings: 'Maximum Preset',
-    personalNotes: 'Superb voice acting and character dynamics. Looking forward to diving into the sequel!'
+    personalNotes: 'Stays locked at 144 FPS constantly. Superb voice acting and character dynamics.'
   },
   {
     id: '8',
@@ -158,14 +158,14 @@ export const games = [
     playtimeHours: 12,
     releaseYear: 2020,
     coverUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop',
-    notes: 'Stunning realism. Fly in real-time weather anywhere around the entire planet.',
+    notes: 'Stunning realism. Runs smoothly with DLSS Frame Gen capabilities / DLSS Super Resolution.',
     isFavorite: false,
     addedDate: '2026-04-01',
-    fps: 55,
-    cpuTemp: '72°C',
-    gpuTemp: '76°C',
-    graphicsSettings: 'Ultra Settings (TAA)',
-    personalNotes: 'Very demanding on storage and internet bandwidth, but incredibly therapeutic to fly at sunset.'
+    fps: 45,
+    cpuTemp: '71°C',
+    gpuTemp: '73°C',
+    graphicsSettings: 'Medium-High Mix (DLSS Quality)',
+    personalNotes: 'Very demanding on storage and VRAM, but runs surprisingly well on the RTX 3050 6GB.'
   },
   {
     id: '9',
@@ -182,10 +182,10 @@ export const games = [
     notes: 'Spectacular port. The combat feels heavy and impactful, story tells a beautiful narrative of fatherhood.',
     isFavorite: false,
     addedDate: '2026-04-18',
-    fps: 105,
+    fps: 60,
     cpuTemp: '66°C',
-    gpuTemp: '69°C',
-    graphicsSettings: 'Ultra Custom Spec',
-    personalNotes: 'The Leviathan Axe is one of the most satisfying weapons in entire gaming history.'
+    gpuTemp: '68°C',
+    graphicsSettings: 'High Preset (DLSS Balanced)',
+    personalNotes: 'Rides smoothly at 60 FPS on the HP Victus. The Leviathan Axe action feels incredible!'
   }
 ];
