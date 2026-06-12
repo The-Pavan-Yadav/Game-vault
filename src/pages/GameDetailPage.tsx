@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGameVault } from '../context/GameVaultContext';
-import { GameCover } from '../components/GameCover';
 import { 
   ArrowLeft, 
   Tv, 
@@ -67,27 +66,6 @@ export const GameDetailPage: React.FC = () => {
           <img 
             src={game.coverUrl} 
             alt="Blur backplate shadow" 
-            onError={(e) => {
-              const target = e.currentTarget;
-              const cleanTitle = game.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-              let defaultSteamUrl = '';
-              if (cleanTitle.includes('cyberpunk')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1091500/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('forza') || cleanTitle.includes('horizon')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1551360/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('daysgone')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1030840/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('eldenring')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1245620/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('reddead') || cleanTitle.includes('rdr2') || cleanTitle.includes('redemption')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1174180/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('doometernal') || cleanTitle.includes('doom')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/782330/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('hades')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1145360/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('flight') || cleanTitle.includes('mfs') || cleanTitle.includes('microsoftflight')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1250410/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('godofwar')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1593500/library_600x900_2x.jpg';
-              else if (cleanTitle.includes('hitman')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1659040/library_600x900_2x.jpg';
-              
-              if (defaultSteamUrl) {
-                target.src = defaultSteamUrl;
-              } else {
-                target.src = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop';
-              }
-            }}
             className="w-full h-full object-cover filter blur-3xl opacity-[0.16] scale-125"
             referrerPolicy="no-referrer"
           />
@@ -99,15 +77,17 @@ export const GameDetailPage: React.FC = () => {
           
           {/* Cover Art Wrapper */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-64 sm:w-72 rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group select-none">
-              <GameCover 
-                title={game.title} 
-                coverUrl={game.coverUrl} 
-                showHoverEffect={true} 
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-800 shadow-xl group max-w-md">
+              <img 
+                src={game.coverUrl} 
+                alt={game.title} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none animate-fade-in"
+                referrerPolicy="no-referrer"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
               
               {/* Overlay rating brand */}
-              <div className="absolute top-4 right-4 bg-amber-500/90 border border-amber-550/40 text-amber-400 font-mono font-black text-xs px-3 py-1 rounded-xl backdrop-blur-sm gap-1 flex items-center shadow-lg z-10">
+              <div className="absolute top-4 right-4 bg-amber-500/15 border border-amber-500/45 text-amber-400 font-mono font-black text-xs px-3 py-1 rounded-xl backdrop-blur-md gap-1 flex items-center shadow-lg">
                 <Star className="w-3.5 h-3.5 fill-amber-400 shrink-0" />
                 <span>{game.rating.toFixed(1)} / 10.0</span>
               </div>

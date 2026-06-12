@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameVault } from '../context/GameVaultContext';
 import { Game, GameStatus } from '../types';
-import { GameCover } from '../components/GameCover';
 import { 
   Search, 
   HardDrive, 
@@ -20,76 +19,41 @@ interface GameDetailModalProps {
 
 const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
   const navigate = useNavigate();
-
-  // Dynamic fallback mapping for modal banner backdrop image stream
-  const cleanTitle = game.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-  let defaultSteam = '';
-  if (cleanTitle.includes('cyberpunk')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1091500/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('forza') || cleanTitle.includes('horizon')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1551360/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('daysgone')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1030840/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('eldenring')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1245620/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('reddead') || cleanTitle.includes('rdr2') || cleanTitle.includes('redemption')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1174180/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('doometernal') || cleanTitle.includes('doom')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/782330/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('hades')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1145360/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('flight') || cleanTitle.includes('mfs') || cleanTitle.includes('microsoftflight')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1250410/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('godofwar')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1593500/library_600x900_2x.jpg';
-  else if (cleanTitle.includes('hitman')) defaultSteam = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1659040/library_600x900_2x.jpg';
-
-  const [modalSrc, setModalSrc] = useState<string>(game.coverUrl);
-
-  const handleImgError = () => {
-    if (defaultSteam && modalSrc !== defaultSteam) {
-      setModalSrc(defaultSteam);
-    } else {
-      setModalSrc('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop');
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm animate-fade-in">
       <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
         {/* Design accents */}
-        <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-indigo-500 z-10" />
+        <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-indigo-500" />
         
         {/* Top banner / Image placeholder */}
-        <div className="relative h-60 shrink-0 overflow-hidden bg-slate-950 flex items-end p-5 md:p-6">
+        <div className="relative h-56 shrink-0 overflow-hidden bg-slate-950">
           <img 
-            src={modalSrc} 
+            src={game.coverUrl} 
             alt={game.title} 
-            onError={handleImgError}
-            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.22] blur-md scale-105 pointer-events-none" 
+            className="w-full h-full object-cover filter brightness-[0.5] pointer-events-none" 
             referrerPolicy="no-referrer" 
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/10 to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/30" />
           
           <button 
             type="button" 
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-xl bg-slate-950/85 border border-slate-800/80 hover:bg-slate-800 text-slate-350 hover:text-white transition-all cursor-pointer shadow-lg hover:rotate-90 duration-300 z-20"
+            className="absolute top-4 right-4 p-2 rounded-xl bg-slate-950/85 border border-slate-800/80 hover:bg-slate-800 text-slate-350 hover:text-white transition-all cursor-pointer shadow-lg hover:rotate-90 duration-300"
             title="Close telemetry details"
           >
             <X className="w-4 h-4" />
           </button>
 
-          <div className="relative z-10 flex gap-4 items-end w-full">
-            <div className="w-20 sm:w-24 shrink-0 shadow-2xl rounded-xl overflow-hidden border border-slate-700/60 self-center sm:self-auto select-none">
-              <GameCover 
-                title={game.title} 
-                coverUrl={game.coverUrl} 
-                showHoverEffect={false} 
-              />
-            </div>
-            <div className="flex-1 pb-1">
-              <span className="text-[9px] font-mono font-bold uppercase tracking-wider bg-cyan-950/95 border border-cyan-800/50 text-cyan-400 px-2.5 py-0.5 rounded-md">
-                {game.platform}
-              </span>
-              <h3 className="text-lg md:text-xl font-black font-sans text-white uppercase tracking-tight mt-2 line-clamp-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                {game.name || game.title}
-              </h3>
-              <p className="text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest mt-1">
-                {game.genre} • Released {game.releaseYear}
-              </p>
-            </div>
+          <div className="absolute bottom-4 left-6 right-6">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-950/95 border border-cyan-800/50 text-cyan-400 px-2.5 py-0.5 rounded-md">
+              {game.platform}
+            </span>
+            <h3 className="text-xl md:text-2xl font-black font-sans text-white uppercase tracking-tight mt-2 truncate drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              {game.name || game.title}
+            </h3>
+            <p className="text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest mt-1">
+              {game.genre} • Released {game.releaseYear}
+            </p>
           </div>
         </div>
 
@@ -316,30 +280,31 @@ export const MyGames: React.FC = () => {
               onClick={() => setSelectedGame(game)}
             >
               {/* Cover Image Frame */}
-              <div className="relative w-full overflow-hidden shrink-0 bg-slate-950 rounded-t-2xl">
-                <GameCover 
-                  title={game.title} 
-                  coverUrl={game.coverUrl} 
-                  className="rounded-b-none border-0"
+              <div className="relative aspect-video w-full overflow-hidden shrink-0 bg-slate-950">
+                <img 
+                  src={game.coverUrl} 
+                  alt={game.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                  referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/35" />
 
                 {/* Rating badge Overlay */}
-                <span className="absolute top-3 right-3 bg-amber-500/90 text-amber-400 border border-amber-550/40 text-[10px] font-extrabold font-mono py-1 px-2.5 rounded-lg uppercase tracking-wider backdrop-blur-sm shadow-md z-10">
+                <span className="absolute top-3 right-3 bg-amber-500/10 text-amber-400 border border-amber-500/35 text-[10px] font-extrabold font-mono py-1 px-2.5 rounded-lg uppercase tracking-wider backdrop-blur-md shadow-md">
                   ★ {game.rating.toFixed(1)}
                 </span>
                 
                 {/* Completion status badge and platform Overlay */}
-                <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap z-10">
+                <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap">
                   <span className={`text-[9px] font-bold font-mono py-0.5 px-2 rounded uppercase tracking-wider ${
-                    game.status === 'playing' ? 'bg-cyan-500/85 text-black' :
-                    game.status === 'completed' ? 'bg-emerald-500/85 text-black' :
-                    'bg-amber-500/85 text-black'
+                    game.status === 'playing' ? 'bg-cyan-500/20 text-[#00f0ff] border border-cyan-500/35' :
+                    game.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/35' :
+                    'bg-amber-500/20 text-amber-500 border border-amber-305/35'
                   }`}>
                     {game.status}
                   </span>
                   
-                  <span className="bg-slate-950/85 text-slate-200 border border-slate-800 text-[9px] font-mono py-0.5 px-2 rounded font-bold">
+                  <span className="bg-slate-950/80 text-slate-300 border border-slate-800 text-[9px] font-mono py-0.5 px-2 rounded">
                     {game.platform}
                   </span>
                 </div>

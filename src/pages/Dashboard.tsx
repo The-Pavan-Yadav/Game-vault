@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGameVault } from '../context/GameVaultContext';
-import { GameCover } from '../components/GameCover';
 import { 
   Gamepad2, 
   HardDrive, 
@@ -190,11 +189,12 @@ export const Dashboard: React.FC = () => {
                     className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/40 border border-slate-800/80 hover:border-cyan-500/30 rounded-xl gap-4 transition-all hover:bg-slate-950/80 cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-9 sm:w-10 overflow-hidden shrink-0 rounded-lg group-hover:shadow-[0_0_10px_rgba(6,182,212,0.25)] transition-shadow">
-                        <GameCover 
-                          title={game.title} 
-                          coverUrl={game.coverUrl} 
-                          showHoverEffect={true} 
+                      <div className="w-14 h-10 rounded overflow-hidden relative shrink-0 border border-slate-800">
+                        <img 
+                          src={game.coverUrl} 
+                          alt={game.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div>
@@ -231,33 +231,12 @@ export const Dashboard: React.FC = () => {
               <img 
                 src={favoriteGame.coverUrl} 
                 alt={favoriteGame.title} 
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  const cleanTitle = favoriteGame.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-                  let defaultSteamUrl = '';
-                  if (cleanTitle.includes('cyberpunk')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1091500/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('forza') || cleanTitle.includes('horizon')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1551360/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('daysgone')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1030840/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('eldenring')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1245620/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('reddead') || cleanTitle.includes('rdr2') || cleanTitle.includes('redemption')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1174180/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('doometernal') || cleanTitle.includes('doom')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/782330/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('hades')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1145360/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('flight') || cleanTitle.includes('mfs') || cleanTitle.includes('microsoftflight')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1250410/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('godofwar')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1593500/library_600x900_2x.jpg';
-                  else if (cleanTitle.includes('hitman')) defaultSteamUrl = 'https://cdn.cloudflaresteamstatic.com/steam/apps/1659040/library_600x900_2x.jpg';
-                  
-                  if (defaultSteamUrl) {
-                    target.src = defaultSteamUrl;
-                  } else {
-                    target.src = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop';
-                  }
-                }}
-                className="absolute inset-0 w-full h-full object-cover filter brightness-[0.22] saturate-[1.1] scale-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[0.25] saturate-[1.1] scale-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
               
-              <div className="absolute top-4 left-4 flex gap-1.5 z-10">
+              <div className="absolute top-4 left-4 flex gap-1.5">
                 <span className="bg-[#ffe600]/10 text-[#ffe600] border border-[#ffe600]/30 text-[9px] font-bold font-mono py-0.5 px-2 rounded-md uppercase tracking-wider backdrop-blur-md">
                   ★ HIGHEST RATED
                 </span>
@@ -266,23 +245,14 @@ export const Dashboard: React.FC = () => {
                 </span>
               </div>
 
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6 z-10">
-                <div className="flex gap-4 items-end flex-1">
-                  <div className="w-16 sm:w-20 shrink-0 shadow-2xl rounded-xl overflow-hidden border border-slate-700/60 hidden xs:block select-none">
-                    <GameCover 
-                      title={favoriteGame.title} 
-                      coverUrl={favoriteGame.coverUrl} 
-                      showHoverEffect={false} 
-                    />
-                  </div>
-                  <div className="space-y-1 pb-1">
-                    <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest font-mono">{favoriteGame.genre}</span>
-                    <p className="text-[9px] font-mono tracking-wider font-semibold text-cyan-400/80 animate-pulse">CLICK TO DEPLOY DETAILED METRICS</p>
-                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight line-clamp-1 group-hover:text-[#00f0ff] transition-colors">{favoriteGame.title}</h3>
-                    <p className="text-xs text-slate-350 line-clamp-2 max-w-lg mt-1 font-medium italic hidden md:block">
-                      "{favoriteGame.notes || 'No log details custom defined yet.'}"
-                    </p>
-                  </div>
+              <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest font-mono">{favoriteGame.genre}</span>
+                  <p className="text-[9px] font-mono tracking-wider font-semibold text-cyan-400/80 animate-pulse">CLICK TO DEPLOY DETAILED METRICS</p>
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight line-clamp-1 group-hover:text-[#00f0ff] transition-colors">{favoriteGame.title}</h3>
+                  <p className="text-xs text-slate-350 line-clamp-2 max-w-lg mt-1 font-medium italic">
+                    "{favoriteGame.notes || 'No log details custom defined yet.'}"
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-2 bg-slate-950/80 border border-slate-800/60 p-3 rounded-xl shrink-0 backdrop-blur-sm self-start sm:self-auto group-hover:border-cyan-500/20">
