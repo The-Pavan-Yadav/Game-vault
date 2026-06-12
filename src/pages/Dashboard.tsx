@@ -130,7 +130,7 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <h3 className="text-3xl font-black font-sans tracking-tight text-white">{averageRating} <span className="text-sm font-normal text-slate-500">/ 5.0</span></h3>
+            <h3 className="text-3xl font-black font-sans tracking-tight text-white">{averageRating} <span className="text-sm font-normal text-slate-500">/ 10.0</span></h3>
             <p className="text-[10px] font-mono text-slate-500 mt-1 uppercase">General Quality Index</p>
           </div>
         </div>
@@ -185,7 +185,8 @@ export const Dashboard: React.FC = () => {
                 {activeGames.map((game) => (
                   <div 
                     key={game.id} 
-                    className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/40 border border-slate-800/80 hover:border-slate-700/80 rounded-xl gap-4 transition-all hover:bg-slate-950/80"
+                    onClick={() => navigate(`/game/${game.id}`)}
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/40 border border-slate-800/80 hover:border-cyan-500/30 rounded-xl gap-4 transition-all hover:bg-slate-950/80 cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-14 h-10 rounded overflow-hidden relative shrink-0 border border-slate-800">
@@ -223,7 +224,10 @@ export const Dashboard: React.FC = () => {
 
           {/* Epic Showcase Card of Featured game */}
           {favoriteGame && (
-            <div className="relative rounded-2xl overflow-hidden border border-slate-800 h-64 shadow-2xl group">
+            <div 
+              onClick={() => navigate(`/game/${favoriteGame.id}`)}
+              className="relative rounded-2xl overflow-hidden border border-slate-800 h-64 shadow-2xl group cursor-pointer hover:border-cyan-500/40"
+            >
               <img 
                 src={favoriteGame.coverUrl} 
                 alt={favoriteGame.title} 
@@ -244,13 +248,14 @@ export const Dashboard: React.FC = () => {
               <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div className="space-y-1">
                   <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest font-mono">{favoriteGame.genre}</span>
-                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight line-clamp-1">{favoriteGame.title}</h3>
+                  <p className="text-[9px] font-mono tracking-wider font-semibold text-cyan-400/80 animate-pulse">CLICK TO DEPLOY DETAILED METRICS</p>
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight line-clamp-1 group-hover:text-[#00f0ff] transition-colors">{favoriteGame.title}</h3>
                   <p className="text-xs text-slate-350 line-clamp-2 max-w-lg mt-1 font-medium italic">
                     "{favoriteGame.notes || 'No log details custom defined yet.'}"
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 bg-slate-950/80 border border-slate-800/60 p-3 rounded-xl shrink-0 backdrop-blur-sm self-start sm:self-auto">
+                <div className="flex items-center gap-2 bg-slate-950/80 border border-slate-800/60 p-3 rounded-xl shrink-0 backdrop-blur-sm self-start sm:self-auto group-hover:border-cyan-500/20">
                   <Timer className="w-4 h-4 text-fuchsia-400" />
                   <div className="text-right">
                     <p className="text-[9px] font-mono text-slate-400 font-medium uppercase">Time Investment</p>

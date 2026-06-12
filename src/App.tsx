@@ -9,6 +9,7 @@ import { Layout } from './components/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { MyGames } from './pages/MyGames';
 import { Statistics } from './pages/Statistics';
+import { GameDetailPage } from './pages/GameDetailPage';
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/games" element={<MyGames />} />
             <Route path="/statistics" element={<Statistics />} />
+            <Route path="/game/:id" element={<GameDetailPage />} />
+            <Route path="/games/:id" element={<GameDetailPage />} />
           </Routes>
         </Layout>
       </HashRouter>
