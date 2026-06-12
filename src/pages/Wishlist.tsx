@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGameVault } from '../context/GameVaultContext';
 import { WishlistItem, GameStatus } from '../types';
+import { GameCover } from '../components/GameCover';
 import { 
   Heart, 
   Trash2, 
@@ -200,14 +201,12 @@ export const Wishlist: React.FC = () => {
               className="group relative bg-slate-900/45 border border-slate-800 hover:border-slate-705 p-4 rounded-2xl flex flex-col gap-4 shadow duration-300 hover:shadow-rose-950/5 transition-all"
             >
               {/* Cover background or image frame */}
-              <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-955 border border-slate-850">
-                <img 
-                  src={item.coverUrl} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
-                  referrerPolicy="no-referrer"
+              <div className="relative overflow-hidden bg-slate-955 rounded-xl border border-slate-850">
+                <GameCover 
+                  title={item.title} 
+                  coverUrl={item.coverUrl} 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40" />
                 
                 {/* Cost sticker */}
                 <div className="absolute top-2.5 right-2.5 bg-emerald-950/90 text-emerald-400 border border-emerald-800/60 font-mono font-black text-xs px-2.5 py-1 rounded-lg shadow-md">
