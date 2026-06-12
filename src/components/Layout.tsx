@@ -1,0 +1,177 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { 
+  LayoutDashboard, 
+  Gamepad2, 
+  Heart, 
+  BarChart3, 
+  Cpu, 
+  User, 
+  Gamepad,
+  Volume2,
+  VolumeX,
+  Plus
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [soundOn, setSoundOn] = React.useState(false);
+
+  const navItems = [
+    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'My Games', path: '/games', icon: Gamepad2 },
+    { name: 'Statistics', path: '/statistics', icon: BarChart3 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#060814] text-slate-100 flex flex-col font-sans selection:bg-fuchsia-500 selection:text-white">
+      {/* Background Cyber Glow Gradients */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-300px] left-[-300px] w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-fuchsia-500/10 rounded-full blur-[150px]" />
+        <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Glass Top Header */}
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#060814]/85 border-b border-slate-800/80 px-4 md:px-8 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-cyan-400 rounded-lg blur opacity-70 animate-pulse" />
+            <div className="relative bg-slate-950 p-2 rounded-lg border border-slate-700">
+              <Gamepad className="w-6 h-6 text-cyan-400" />
+            </div>
+          </div>
+          <div>
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-400 text-transparent bg-clip-text font-black tracking-wider text-xl md:text-2xl uppercase">
+              GameVault
+            </span>
+            <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#00f0ff] uppercase bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/30 w-fit mt-0.5">
+              <span>System: Online</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block" />
+            </div>
+          </div>
+        </div>
+
+        {/* Quick actions */}
+        <div className="flex items-center gap-3">
+          {/* Sound Toggle (immersive game flavor) */}
+          <button
+            onClick={() => setSoundOn(!soundOn)}
+            className="p-2 text-slate-400 hover:text-cyan-400 bg-slate-900/40 rounded-lg hover:bg-slate-800/50 border border-slate-800/80 transition-all cursor-pointer"
+            title={soundOn ? 'Mute Interface Sounds' : 'Enable Interface Sounds'}
+            id="sound-toggle-btn"
+          >
+            {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4" />}
+          </button>
+
+          {/* User profile capsule */}
+          <div className="flex items-center gap-2 bg-slate-900/60 border border-slate-805/60 py-1.5 px-3 rounded-xl">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-500 flex items-center justify-center font-bold text-xs text-white">
+              <User className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-xs font-mono font-bold text-slate-350 hidden sm:inline">PRO_PLAYER</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Wrapper */}
+      <div className="flex-1 flex relative overflow-hidden">
+        {/* Desktop Sidebar Navigation */}
+        <aside className="hidden md:flex flex-col w-64 shrink-0 border-r border-slate-800/80 backdrop-blur-md bg-[#060814]/40 p-6 z-10 sticky top-[73px] h-[calc(100vh-73px)]">
+          <div className="text-slate-500 text-[10px] font-bold tracking-widest font-mono uppercase mb-4 pl-4">
+            Navigation Menu
+          </div>
+          <nav className="space-y-2 flex-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) => `
+                    relative flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all group duration-300 cursor-pointer
+                    ${isActive 
+                      ? 'text-[#00f0ff] bg-gradient-to-r from-cyan-950/20 to-indigo-950/10 border-l-2 border-cyan-400 shadow-md shadow-cyan-950/20' 
+                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/40 hover:translate-x-1 border-l-2 border-transparent'
+                    }
+                  `}
+                  id={`nav-desktop-${item.name.toLowerCase().replace(' ', '-')}`}
+                >
+                  {({ isActive }) => (
+                    <>
+                      {/* Active indicator glowing back-glow */}
+                      {isActive && (
+                        <div className="absolute inset-0 bg-cyan-500/5 rounded-xl filter blur-sm -z-10" />
+                      )}
+                      
+                      <Icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-cyan-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+                      
+                      <span>{item.name}</span>
+                      
+                      {/* Interactive slide indicator */}
+                      <span className={`ml-auto w-1 h-1 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity ${isActive ? 'opacity-100' : ''}`} />
+                    </>
+                  )}
+                </NavLink>
+              );
+            })}
+          </nav>
+
+          {/* System Spec Quick Summary */}
+          <div className="mt-auto bg-slate-900/50 backdrop-blur-md border border-slate-800/60 p-4 rounded-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-500/5 to-transparent rounded-full" />
+            <span className="text-[10px] font-mono font-bold tracking-wider text-teal-400 uppercase">Hardware Engine</span>
+            <div className="mt-2 space-y-1 text-xs">
+              <p className="font-medium text-slate-350 line-clamp-1">RTX 4080 Super</p>
+              <p className="text-slate-500 text-[10px] font-mono">Status: Optimal temperature</p>
+            </div>
+            {/* Custom Interactive Power Bar */}
+            <div className="w-full h-1 bg-slate-800 rounded-full mt-3 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full" style={{ width: '82%' }} />
+            </div>
+          </div>
+        </aside>
+
+        {/* Dynamic Visual Content */}
+        <main className="flex-1 overflow-y-auto px-4 py-6 md:p-8 z-10 pb-24 md:pb-8 max-w-7xl mx-auto w-full">
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="h-full"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </div>
+
+      {/* Mobile Sticky Bottom Navigation Bar */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-lg bg-[#060814]/90 border-t border-slate-800/80 px-4 py-2 flex items-center justify-around pb-safe">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => `
+                flex flex-col items-center gap-1 py-1 px-3 rounded-lg transition-all text-[10px] uppercase tracking-wider font-semibold cursor-pointer
+                ${isActive ? 'text-amber-400 scale-105' : 'text-slate-400 hover:text-slate-200'}
+              `}
+              id={`nav-mobile-${item.name.toLowerCase().replace(' ', '-')}`}
+            >
+              <Icon className="w-5 h-5" />
+              <span className="text-[9px] mt-0.5">{item.name === 'PC Setup' ? 'Setup' : item.name}</span>
+            </NavLink>
+          );
+        })}
+      </nav>
+    </div>
+  );
+};

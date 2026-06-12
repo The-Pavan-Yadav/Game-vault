@@ -1,0 +1,6 @@
+{
+  "name": "GameVault",
+  "description": "A modern, highly polished gaming library manager with dashboard, game tracker, wishlist, statistics, and PC setup tracker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
