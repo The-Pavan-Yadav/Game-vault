@@ -21,6 +21,7 @@ import {
   Star, 
   Cpu 
 } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export const Statistics: React.FC = () => {
   const { games } = useGameVault();
@@ -105,11 +106,39 @@ export const Statistics: React.FC = () => {
     return null;
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 220,
+        damping: 20
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6 animate-fade-in font-sans">
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
+      className="space-y-6 font-sans"
+    >
       
       {/* Title */}
-      <div>
+      <motion.div variants={itemVariants}>
         <h1 className="text-xl md:text-2xl font-black text-white uppercase tracking-wider flex items-center gap-2">
           <Activity className="w-5 h-5 text-cyan-400" />
           <span>Database Analytics & Statistics</span>
@@ -117,7 +146,7 @@ export const Statistics: React.FC = () => {
         <p className="text-xs text-slate-400 mt-1">
           Deep telemetry records and space allocation analysis.
         </p>
-      </div>
+      </motion.div>
 
       {/* Telemetry quick stats rows */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -312,6 +341,6 @@ export const Statistics: React.FC = () => {
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -11,6 +11,7 @@ import {
   Star, 
   SlidersHorizontal 
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface GameDetailModalProps {
   game: Game;
@@ -20,8 +21,20 @@ interface GameDetailModalProps {
 const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
   const navigate = useNavigate();
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm"
+    >
+      <motion.div 
+        initial={{ scale: 0.95, y: 15, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.95, y: 15, opacity: 0 }}
+        transition={{ type: 'spring', damping: 22, stiffness: 210 }}
+        className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+      >
         {/* Design accents */}
         <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-indigo-500" />
         
@@ -144,8 +157,8 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
           </div>
 
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -177,6 +190,29 @@ export const MyGames: React.FC = () => {
     if (sortBy === 'size') return b.storageGB - a.storageGB; // largest size first
     return 0;
   });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 220,
+        damping: 20
+      }
+    }
+  };
 
   return (
     <div className="space-y-6 animate-fade-in font-sans">
@@ -271,13 +307,21 @@ export const MyGames: React.FC = () => {
           <p className="text-xs text-slate-400 font-medium">Verify your search keywords, filter conditions or active presets.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {sortedGames.map((game) => (
-            <div 
+            <motion.div 
+              layout
+              variants={itemVariants}
               key={game.id}
-              className="group relative bg-slate-900/30 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] hover:translate-y-[-4px] flex flex-col cursor-pointer"
+              className="group relative bg-slate-900/30 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] flex flex-col cursor-pointer"
               onClick={() => setSelectedGame(game)}
+              whileHover={{ y: -6, scale: 1.015 }}
+              whileTap={{ scale: 0.985 }}
             >
               {/* Cover Image Frame */}
               <div className="relative aspect-video w-full overflow-hidden shrink-0 bg-slate-950">
@@ -317,7 +361,7 @@ export const MyGames: React.FC = () => {
                   <h3 className="text-base font-black font-sans text-slate-100 group-hover:text-cyan-400 transition-colors uppercase line-clamp-1 mt-1">
                     {game.title}
                   </h3>
-                  <p className="text-xs text-slate-400 line-clamp-2 mt-2 leading-relaxed italic font-sans">
+                  <p className="text-xs text-slate-400 line-clamp-2 mt-2 leading-relaxed italic font-sans font-medium">
                     "{game.personalNotes || game.notes || 'No notes defined yet.'}"
                   </p>
                 </div>
@@ -332,19 +376,21 @@ export const MyGames: React.FC = () => {
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           ))}
 
-        </div>
+        </motion.div>
       )}
 
       {/* Render selected game details modal */}
-      {selectedGame && (
-        <GameDetailModal 
-          game={selectedGame}
-          onClose={() => setSelectedGame(null)}
-        />
-      )}
+      <AnimatePresence>
+        {selectedGame && (
+          <GameDetailModal 
+            game={selectedGame}
+            onClose={() => setSelectedGame(null)}
+          />
+        )}
+      </AnimatePresence>
 
     </div>
   );

@@ -15,6 +15,7 @@ import {
   Monitor
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 export const Dashboard: React.FC = () => {
   const { games } = useGameVault();
@@ -56,10 +57,41 @@ export const Dashboard: React.FC = () => {
 
   const greeting = getGreeting();
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 220,
+        damping: 20
+      }
+    }
+  };
+
   return (
-    <div className="space-y-6 animate-fade-in font-sans">
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
+      className="space-y-6 font-sans"
+    >
       {/* Top Banner section */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-r from-slate-900 via-[#0e122b] to-slate-950 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+      <motion.div 
+        variants={itemVariants}
+        className="relative rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-r from-slate-900 via-[#0e122b] to-slate-950 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl"
+      >
         {/* Animated grid overlay effect */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
         <div className="absolute top-0 right-0 w-80 h-full bg-gradient-to-l from-violet-500/10 via-cyan-500/5 to-transparent blur-3xl pointer-events-none" />
@@ -84,12 +116,16 @@ export const Dashboard: React.FC = () => {
           <span>Catalog Database</span>
           <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </button>
-      </div>
+      </motion.div>
 
       {/* Main Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Metric Card: Total Games */}
-        <div className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-violet-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-violet-950/20 transition-all duration-300">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-violet-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-violet-950/20 transition-all duration-300"
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-violet-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-violet-500/20" />
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold font-sans tracking-widest text-slate-400 uppercase">Total Games</span>
@@ -101,10 +137,14 @@ export const Dashboard: React.FC = () => {
             <h3 className="text-3xl font-black font-sans tracking-tight text-white">{totalGames}</h3>
             <p className="text-[10px] font-mono text-slate-500 mt-1 uppercase">Active Titles Cataloged</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Metric Card: Total Storage */}
-        <div className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-cyan-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-cyan-950/20 transition-all duration-300">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-cyan-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-cyan-950/20 transition-all duration-300"
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-cyan-500/20" />
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold font-sans tracking-widest text-slate-400 uppercase">Storage Cache</span>
@@ -118,10 +158,14 @@ export const Dashboard: React.FC = () => {
             </h3>
             <p className="text-[10px] font-mono text-slate-500 mt-1 uppercase">Allocated Sector Space</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Metric Card: Average Rating */}
-        <div className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-amber-950/20 transition-all duration-300">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-amber-950/20 transition-all duration-300"
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-amber-500/20" />
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold font-sans tracking-widest text-slate-400 uppercase">Average Rating</span>
@@ -133,10 +177,14 @@ export const Dashboard: React.FC = () => {
             <h3 className="text-3xl font-black font-sans tracking-tight text-white">{averageRating} <span className="text-sm font-normal text-slate-500">/ 10.0</span></h3>
             <p className="text-[10px] font-mono text-slate-500 mt-1 uppercase">General Quality Index</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Metric Card: Completed Games */}
-        <div className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-fuchsia-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-fuchsia-950/20 transition-all duration-300">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-fuchsia-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-fuchsia-950/20 transition-all duration-300"
+        >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-fuchsia-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-fuchsia-500/20" />
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold font-sans tracking-widest text-slate-400 uppercase">Completion Rate</span>
@@ -153,7 +201,7 @@ export const Dashboard: React.FC = () => {
               <div className="bg-gradient-to-r from-fuchsia-500 to-indigo-500 h-full rounded-full transition-all duration-500" style={{ width: `${completionRate}%` }} />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Grid Content */}
@@ -445,6 +493,6 @@ export const Dashboard: React.FC = () => {
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 };

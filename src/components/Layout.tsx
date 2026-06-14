@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Gamepad2, 
@@ -20,6 +20,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [soundOn, setSoundOn] = React.useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
@@ -127,10 +128,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main className="flex-1 overflow-y-auto px-4 py-6 md:p-8 z-10 pb-24 md:pb-8 max-w-7xl mx-auto w-full">
           <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              key={location.pathname}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1.0] }}
               className="h-full"
             >
               {children}
