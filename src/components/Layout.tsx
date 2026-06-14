@@ -27,6 +27,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Statistics', path: '/statistics', icon: BarChart3 },
   ];
 
+  const isItemActive = (item: typeof navItems[0]) => {
+    const currentPath = location.pathname;
+    if (item.path === '/') {
+      return currentPath === '/';
+    }
+    if (item.path === '/games') {
+      return currentPath.startsWith('/games') || currentPath.startsWith('/game/');
+    }
+    return currentPath === item.path || currentPath.startsWith(item.path);
+  };
+
   return (
     <div className="min-h-screen bg-[#060814] text-slate-100 flex flex-col font-sans selection:bg-fuchsia-500 selection:text-white">
       {/* Background Cyber Glow Gradients */}
@@ -80,34 +91,38 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="space-y-2 flex-1">
             {navItems.map((item) => {
               const Icon = item.icon;
+              const isActive = isItemActive(item);
               return (
                 <NavLink
                   key={item.path}
                   to={item.path}
-                  className={({ isActive }) => `
+                  className={`
                     relative flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all group duration-300 cursor-pointer
                     ${isActive 
-                      ? 'text-[#00f0ff] bg-gradient-to-r from-cyan-950/20 to-indigo-950/10 border-l-2 border-cyan-400 shadow-md shadow-cyan-950/20' 
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/40 hover:translate-x-1 border-l-2 border-transparent'
+                      ? 'text-[#00f0ff] border-l-2 border-cyan-400' 
+                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/20 border-l-2 border-transparent'
                     }
                   `}
                   id={`nav-desktop-${item.name.toLowerCase().replace(' ', '-')}`}
                 >
-                  {({ isActive }) => (
-                    <>
-                      {/* Active indicator glowing back-glow */}
-                      {isActive && (
-                        <div className="absolute inset-0 bg-cyan-500/5 rounded-xl filter blur-sm -z-10" />
-                      )}
-                      
-                      <Icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-cyan-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
-                      
-                      <span>{item.name}</span>
-                      
-                      {/* Interactive slide indicator */}
-                      <span className={`ml-auto w-1 h-1 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity ${isActive ? 'opacity-100' : ''}`} />
-                    </>
+                  {/* Stable sliding active background */}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="desktopActiveNav" 
+                      className="absolute inset-0 bg-gradient-to-r from-cyan-950/25 to-indigo-950/15 rounded-xl -z-10 shadow-md shadow-cyan-950/20"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
                   )}
+                  {isActive && (
+                    <div className="absolute inset-0 bg-cyan-500/5 rounded-xl filter blur-sm -z-10" />
+                  )}
+                  
+                  <Icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-cyan-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+                  
+                  <span>{item.name}</span>
+                  
+                  {/* Subtle navigation dot */}
+                  <span className={`ml-auto w-1.5 h-1.5 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isActive ? 'opacity-100' : ''}`} />
                 </NavLink>
               );
             })}
@@ -133,21 +148,31 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Mobile Sticky Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-lg bg-[#060814]/90 border-t border-slate-800/80 px-4 py-2 flex items-center justify-around pb-safe">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-lg bg-[#060814]/95 border-t border-slate-800/80 px-4 py-2.5 flex items-center justify-around pb-safe">
         {navItems.map((item) => {
           const Icon = item.icon;
+          const isActive = isItemActive(item);
           return (
             <NavLink
               key={item.path}
               to={item.path}
-              className={({ isActive }) => `
-                flex flex-col items-center gap-1 py-1 px-3 rounded-lg transition-all text-[10px] uppercase tracking-wider font-semibold cursor-pointer
-                ${isActive ? 'text-amber-400 scale-105' : 'text-slate-400 hover:text-slate-200'}
+              className={`
+                relative flex flex-col items-center gap-1 py-1.5 px-4 rounded-xl transition-all text-[10px] uppercase tracking-wider font-semibold cursor-pointer select-none
+                ${isActive ? 'text-cyan-400 scale-105 font-bold' : 'text-slate-400 hover:text-slate-200'}
               `}
               id={`nav-mobile-${item.name.toLowerCase().replace(' ', '-')}`}
             >
-              <Icon className="w-5 h-5" />
-              <span className="text-[9px] mt-0.5">{item.name === 'PC Setup' ? 'Setup' : item.name}</span>
+              {/* Fluid Active highlight capsule */}
+              {isActive && (
+                <motion.div 
+                  layoutId="mobileActiveNav" 
+                  className="absolute inset-0 bg-cyan-950/40 border-t-2 border-cyan-400 rounded-xl -z-10"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
+              
+              <Icon className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+              <span className="text-[9px] mt-0.5">{item.name}</span>
             </NavLink>
           );
         })}
