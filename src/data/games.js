@@ -208,6 +208,27 @@ export const games = [
     gpuTemp: '68°C',
     graphicsSettings: 'High Preset (DLSS Quality)',
     personalNotes: 'One of the best stealth games ever made. Every mission can be completed in dozens of different ways, making it highly replayable.'
+  },
+  {
+    id: '11',
+    title: 'Forza Horizon 6',
+    name: 'Forza Horizon 6',
+    platform: 'PC',
+    status: 'playing',
+    storageGB: 125,
+    rating: 9.8,
+    genre: 'Racing',
+    playtimeHours: 28,
+    releaseYear: 2026,
+    coverUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop',
+    notes: 'Gorgeous next-gen racing simulator set in highly immersive dynamic open environments. Features ultra-realistic terrain, Nanite detail, spectacular volume illumination, and superb driving physics.',
+    isFavorite: true,
+    addedDate: '2026-06-14',
+    fps: 110,
+    cpuTemp: '62°C',
+    gpuTemp: '65°C',
+    graphicsSettings: 'Extreme Preset (Ray Tracing Extreme)',
+    personalNotes: 'Visually outstanding. Pushes our core engine thermal mechanics to their prime, maintaining an incredibly smooth 110 FPS.'
   }
 ];
 
