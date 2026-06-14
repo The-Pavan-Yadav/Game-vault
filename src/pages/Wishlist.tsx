@@ -165,7 +165,7 @@ export const Wishlist: React.FC = () => {
       </div>
 
       {/* Action panel & search */}
-      <div className="flex flex-col sm:flex-row p-4 rounded-xl bg-slate-900/40 border border-slate-850 justify-between items-center gap-3 select-none">
+      <div className="flex flex-col sm:flex-row p-4 rounded-xl bg-slate-900/40 border border-slate-800 justify-between items-center gap-3 select-none">
         
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
@@ -197,10 +197,10 @@ export const Wishlist: React.FC = () => {
           {filteredWishlist.map((item) => (
             <div 
               key={item.id}
-              className="group relative bg-slate-900/45 border border-slate-800 hover:border-slate-705 p-4 rounded-2xl flex flex-col gap-4 shadow duration-300 hover:shadow-rose-950/5 transition-all"
+              className="group relative bg-slate-900/45 border border-slate-800 hover:border-slate-700 p-4 rounded-2xl flex flex-col gap-4 shadow duration-300 hover:shadow-rose-950/5 transition-all"
             >
               {/* Cover background or image frame */}
-              <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-955 border border-slate-850">
+              <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
                 <img 
                   src={item.coverUrl} 
                   alt={item.title} 
@@ -216,7 +216,7 @@ export const Wishlist: React.FC = () => {
 
                 {/* Left indicators */}
                 <div className="absolute bottom-2.5 left-2.5 flex gap-1.5 flex-wrap">
-                  <span className="bg-slate-950/80 text-slate-350 border border-slate-800 text-[9px] font-mono py-0.5 px-2 rounded">
+                  <span className="bg-slate-950/80 text-slate-300 border border-slate-800 text-[9px] font-mono py-0.5 px-2 rounded">
                     {item.platform}
                   </span>
                   <span className="bg-cyan-950/80 text-cyan-400 border border-cyan-800/40 text-[9px] font-mono py-0.5 px-2 rounded">
@@ -232,14 +232,14 @@ export const Wishlist: React.FC = () => {
                   "{item.notes || 'No objectives written.'}"
                 </p>
 
-                <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-850 leading-none">
+                <div className="flex items-center gap-1 text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-800 leading-none">
                   <HardDrive className="w-3.5 h-3.5 text-slate-600" />
                   <span>Expected space payload: {item.storageGB} GB</span>
                 </div>
               </div>
 
               {/* Buying / Claim trigger buttons */}
-              <div className="flex items-center gap-2 pt-3 border-t border-slate-850">
+              <div className="flex items-center gap-2 pt-3 border-t border-slate-800">
                 
                 {/* Buy & Move */}
                 <button

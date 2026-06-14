@@ -197,7 +197,7 @@ export const Dashboard: React.FC = () => {
               {completedGames} <span className="text-sm font-normal text-slate-500">({completionRate}%)</span>
             </h3>
             {/* Completion Mini Progress bar */}
-            <div className="w-full bg-slate-850 h-1.5 rounded-full mt-2 overflow-hidden border border-slate-800">
+            <div className="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden border border-slate-800">
               <div className="bg-gradient-to-r from-fuchsia-500 to-indigo-500 h-full rounded-full transition-all duration-500" style={{ width: `${completionRate}%` }} />
             </div>
           </div>
@@ -298,7 +298,7 @@ export const Dashboard: React.FC = () => {
                   <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest font-mono">{favoriteGame.genre}</span>
                   <p className="text-[9px] font-mono tracking-wider font-semibold text-cyan-400/80 animate-pulse">CLICK TO DEPLOY DETAILED METRICS</p>
                   <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight line-clamp-1 group-hover:text-[#00f0ff] transition-colors">{favoriteGame.title}</h3>
-                  <p className="text-xs text-slate-350 line-clamp-2 max-w-lg mt-1 font-medium italic">
+                  <p className="text-xs text-slate-300 line-clamp-2 max-w-lg mt-1 font-medium italic">
                     "{favoriteGame.notes || 'No log details custom defined yet.'}"
                   </p>
                 </div>
@@ -348,9 +348,9 @@ export const Dashboard: React.FC = () => {
             <div className="space-y-4 pt-4">
               
               {/* CPU Section */}
-              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-800 transition-all">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                  <span className="flex items-center gap-2 text-slate-455 font-bold uppercase tracking-wider text-[10px]">
                     <Cpu className="w-3.5 h-3.5 text-cyan-400" />
                     <span>CPU ENGINE</span>
                   </span>
@@ -362,7 +362,7 @@ export const Dashboard: React.FC = () => {
                 </div>
                 {/* Animated Capacity bar */}
                 <div className="space-y-1">
-                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800/60">
                     <div className="bg-gradient-to-r from-cyan-500 to-indigo-500 h-full rounded-full transition-all duration-700 w-[38%]" />
                   </div>
                   <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
@@ -373,9 +373,9 @@ export const Dashboard: React.FC = () => {
               </div>
 
               {/* GPU Section */}
-              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-800 transition-all">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                  <span className="flex items-center gap-2 text-slate-455 font-bold uppercase tracking-wider text-[10px]">
                     <Gamepad2 className="w-3.5 h-3.5 text-emerald-400" />
                     <span>GPU CORE</span>
                   </span>
@@ -387,7 +387,7 @@ export const Dashboard: React.FC = () => {
                 </div>
                 {/* Animated Capacity bar */}
                 <div className="space-y-1">
-                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800/60">
                     <div className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-700 w-[45%]" />
                   </div>
                   <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
@@ -398,9 +398,9 @@ export const Dashboard: React.FC = () => {
               </div>
 
               {/* Memory RAM Section */}
-              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-800 transition-all">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                  <span className="flex items-center gap-2 text-slate-455 font-bold uppercase tracking-wider text-[10px]">
                     <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
                     <span>SYSTEM MEMORY</span>
                   </span>
@@ -412,7 +412,7 @@ export const Dashboard: React.FC = () => {
                 </div>
                 {/* Animated Capacity bar */}
                 <div className="space-y-1">
-                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800/60">
                     <div className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full transition-all duration-700 w-[58%]" />
                   </div>
                   <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
@@ -423,9 +423,9 @@ export const Dashboard: React.FC = () => {
               </div>
 
               {/* SSD Storage Section */}
-              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-800 transition-all">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                  <span className="flex items-center gap-2 text-slate-455 font-bold uppercase tracking-wider text-[10px]">
                     <HardDrive className="w-3.5 h-3.5 text-fuchsia-400" />
                     <span>Chassis storage</span>
                   </span>
@@ -437,7 +437,7 @@ export const Dashboard: React.FC = () => {
                 </div>
                 {/* Storage Capacity bar */}
                 <div className="space-y-1">
-                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-850/60">
+                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800/60">
                     <div className="bg-gradient-to-r from-fuchsia-500 to-pink-500 h-full rounded-full transition-all duration-700 w-[72%]" />
                   </div>
                   <div className="flex justify-between text-[8px] font-mono text-slate-500 font-bold uppercase">
@@ -448,9 +448,9 @@ export const Dashboard: React.FC = () => {
               </div>
 
               {/* Display Refresh Section */}
-              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-850 transition-all">
+              <div className="space-y-1.5 hover:bg-slate-950/20 p-2 rounded-xl border border-transparent hover:border-slate-800 transition-all">
                 <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="flex items-center gap-2 text-slate-450 font-bold uppercase tracking-wider text-[10px]">
+                  <span className="flex items-center gap-2 text-slate-455 font-bold uppercase tracking-wider text-[10px]">
                     <Monitor className="w-3.5 h-3.5 text-violet-400" />
                     <span>DISPLAY SOURCE</span>
                   </span>
@@ -472,7 +472,7 @@ export const Dashboard: React.FC = () => {
           {/* Core telemetry quick index */}
           <div className="bg-slate-900/40 border border-[#1e293b]/65 rounded-2xl p-5 backdrop-blur-md space-y-3">
             <h3 className="text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest leading-none">Telemetry index overview</h3>
-            <div className="bg-slate-950/50 rounded-xl p-3 border border-slate-850 text-xs font-mono text-slate-300 space-y-2">
+            <div className="bg-slate-950/50 rounded-xl p-3 border border-slate-800 text-xs font-mono text-slate-300 space-y-2">
               <div className="flex justify-between">
                 <span className="text-slate-500">Platform type:</span>
                 <span className="font-bold text-slate-200 uppercase text-right">HP Victus LAPTOP</span>

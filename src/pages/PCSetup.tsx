@@ -66,7 +66,7 @@ export const PCSetup: React.FC = () => {
           />
 
           <div className="w-full text-center space-y-1 z-10">
-            <h3 className="text-xs font-black uppercase text-slate-350 tracking-widest flex items-center justify-center gap-2">
+            <h3 className="text-xs font-black uppercase text-slate-300 tracking-widest flex items-center justify-center gap-2">
               <Sparkles className="w-4 h-4" style={{ color: rgbColor }} />
               <span>Engine Core Thermals</span>
             </h3>
@@ -196,7 +196,7 @@ export const PCSetup: React.FC = () => {
           </div>
 
           {/* Color Presets Picker grid list */}
-          <div className="w-full bg-slate-950 p-4 border border-slate-850 rounded-xl space-y-3 z-10">
+          <div className="w-full bg-slate-950 p-4 border border-slate-800 rounded-xl space-y-3 z-10">
             <span className="block text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest leading-none">Choose Core Aura Preset</span>
             
             <div className="grid grid-cols-6 gap-2">
@@ -301,7 +301,7 @@ export const PCSetup: React.FC = () => {
                   value={monitor}
                   onChange={(e) => setMonitor(e.target.value)}
                   placeholder="e.g. LG UltraGear 27'' IPS 1440p 165Hz"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-650 transition-all font-medium"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-600 transition-all font-medium"
                 />
               </div>
 
@@ -313,14 +313,14 @@ export const PCSetup: React.FC = () => {
                   value={caseName}
                   onChange={(e) => setCaseName(e.target.value)}
                   placeholder="e.g. Fractal Design North Walnut Wood"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-650 transition-all font-medium"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-600 transition-all font-medium"
                 />
               </div>
             </div>
 
             {/* Simulated Thermals Indicators switches */}
-            <div className="flex flex-col sm:flex-row p-3 rounded-xl bg-slate-950 border border-slate-850 justify-between sm:items-center gap-2">
-              <span className="text-[10px] font-mono font-black text-slate-450 uppercase tracking-wider">Simulate Thermals Overclock</span>
+            <div className="flex flex-col sm:flex-row p-3 rounded-xl bg-slate-950 border border-slate-800 justify-between sm:items-center gap-2">
+              <span className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-wider">Simulate Thermals Overclock</span>
               <button
                 type="button"
                 onClick={() => setShowStatusGlow(!showStatusGlow)}

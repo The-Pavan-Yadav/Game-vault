@@ -326,7 +326,7 @@ export const Statistics: React.FC = () => {
             {/* Status Legend table */}
             <div className="space-y-2.5 w-full sm:w-auto self-start sm:self-center">
               {statusData.map((entry) => (
-                <div key={entry.name} className="flex items-center gap-3 bg-slate-950 p-2.5 rounded-xl border border-slate-850 text-xs w-full sm:w-40">
+                <div key={entry.name} className="flex items-center gap-3 bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-xs w-full sm:w-40">
                   <span className="w-1.5 h-4 rounded-full inline-block animate-pulse" style={{ backgroundColor: entry.color }} />
                   <div className="flex-1 min-w-0">
                     <h5 className="font-bold text-slate-300 leading-none capitalize">{entry.name}</h5>

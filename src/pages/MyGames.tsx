@@ -51,7 +51,7 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
           <button 
             type="button" 
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-xl bg-slate-950/85 border border-slate-800/80 hover:bg-slate-800 text-slate-350 hover:text-white transition-all cursor-pointer shadow-lg hover:rotate-90 duration-300"
+            className="absolute top-4 right-4 p-2 rounded-xl bg-slate-950/85 border border-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-white transition-all cursor-pointer shadow-lg hover:rotate-90 duration-300"
             title="Close telemetry details"
           >
             <X className="w-4 h-4" />
@@ -76,38 +76,38 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
           {/* Main gaming statistics / Hardware requirements metrics grid */}
           <div className="grid grid-cols-2 gap-3.5">
             {/* FPS Benchmarks */}
-            <div className="bg-slate-950/60 border border-slate-850 p-3.5 rounded-xl">
+            <div className="bg-slate-950/60 border border-slate-800 p-3.5 rounded-xl">
               <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-0.5">Average Performance</span>
               <span className="text-base font-mono font-bold text-cyan-400">{game.fps || 60} FPS</span>
             </div>
 
             {/* Scale / Storage size */}
-            <div className="bg-slate-950/60 border border-slate-850 p-3.5 rounded-xl">
+            <div className="bg-slate-950/60 border border-slate-800 p-3.5 rounded-xl">
               <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-0.5">Storage Footprint</span>
               <span className="text-base font-mono font-bold text-fuchsia-400">{game.storageGB} GB</span>
             </div>
 
             {/* CPU temperature */}
-            <div className="bg-slate-950/60 border border-slate-850 p-3.5 rounded-xl">
+            <div className="bg-slate-950/60 border border-slate-800 p-3.5 rounded-xl">
               <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-0.5">CPU Core Temp</span>
               <span className="text-base font-mono font-bold text-rose-400">{game.cpuTemp || '65°C'}</span>
             </div>
 
             {/* GPU temperature */}
-            <div className="bg-slate-950/60 border border-slate-850 p-3.5 rounded-xl">
+            <div className="bg-slate-950/60 border border-slate-800 p-3.5 rounded-xl">
               <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-0.5">GPU Core Temp</span>
               <span className="text-base font-mono font-bold text-amber-400">{game.gpuTemp || '70°C'}</span>
             </div>
           </div>
 
           {/* Graphics Configurations details */}
-          <div className="bg-slate-950/40 border border-slate-850 p-4 rounded-xl">
+          <div className="bg-slate-950/40 border border-slate-800 p-4 rounded-xl">
             <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-1">Target Graphics Quality Settings</span>
             <p className="text-xs font-semibold text-slate-200 uppercase tracking-wide font-sans">{game.graphicsSettings || 'Ultra Preset (RT Active)'}</p>
           </div>
 
           {/* Stars rating */}
-          <div className="bg-slate-950/40 border border-slate-850 p-4 rounded-xl flex items-center justify-between">
+          <div className="bg-slate-950/40 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
             <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest">Calculated Quality Rating</span>
             <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-3 py-1 rounded-lg">
               <span className="text-sm text-amber-400 font-mono">★</span>
@@ -118,13 +118,13 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
           {/* Personal Telemetry Notes */}
           <div className="space-y-1.5">
             <label className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block">Personal Gaming Notes</label>
-            <div className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3.5 text-xs text-slate-300 leading-relaxed font-sans italic border-l-2 border-l-cyan-400">
+            <div className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-xs text-slate-300 leading-relaxed font-sans italic border-l-2 border-l-cyan-400">
               "{game.personalNotes || game.notes || 'No registry logging custom defined.'}"
             </div>
           </div>
 
           {/* Status index bottom meta */}
-          <div className="border-t border-slate-850 pt-3.5 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+          <div className="border-t border-slate-800 pt-3.5 flex items-center justify-between text-[10px] text-slate-500 font-mono">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-slate-600" />
               <span>Catalog Registry: {game.addedDate}</span>
@@ -136,7 +136,7 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
           </div>
 
           {/* Action Footer */}
-          <div className="flex justify-end gap-3 pt-3 border-t border-slate-850">
+          <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
             <button
               type="button"
               onClick={() => {
@@ -230,7 +230,7 @@ export const MyGames: React.FC = () => {
       </div>
 
       {/* Modern Search and Filters Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-900/40 border border-slate-850 backdrop-blur-md">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-900/40 border border-slate-800 backdrop-blur-md">
         
         {/* Search by game name */}
         <div className="relative">

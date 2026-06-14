@@ -112,7 +112,7 @@ export const GameDetailPage: React.FC = () => {
             </div>
 
             {/* General Description */}
-            <div className="relative bg-slate-900/40 border border-slate-850 p-4 rounded-xl">
+            <div className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl">
               <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block mb-1">System Intel briefing</span>
               <p className="text-xs text-slate-300 leading-relaxed">
                 {game.notes || "Become Agent 47 and travel across the world eliminating targets through stealth, disguise, strategy, and creativity. Features large sandbox maps with multiple approaches and high replay value."}
@@ -120,7 +120,7 @@ export const GameDetailPage: React.FC = () => {
             </div>
 
             {/* Live Play Status capsule */}
-            <div className="flex items-center justify-between p-4 rounded-xl bg-slate-900/25 border border-slate-850">
+            <div className="flex items-center justify-between p-4 rounded-xl bg-slate-900/25 border border-slate-800">
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-400 font-medium">Cabinet Vault Status:</span>
                 <span className={`text-[10px] font-extrabold font-mono px-2.5 py-1 rounded-lg uppercase tracking-wider ${
@@ -140,8 +140,7 @@ export const GameDetailPage: React.FC = () => {
 
       {/* Target specs & hardware index metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        {/* LEFT COLUMN: RIG TELEMETRY SCREEN (6Cols) */}
+               {/* LEFT COLUMN: RIG TELEMETRY SCREEN (6Cols) */}
         <div className="lg:col-span-7 bg-slate-900/30 border border-slate-800 rounded-3xl p-6 backdrop-blur-md space-y-6">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div className="flex items-center gap-2">
@@ -154,7 +153,7 @@ export const GameDetailPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
             {/* FPS index block */}
-            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-850 space-y-1">
+            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-800 space-y-1">
               <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest block">Average FPS (High Peak)</span>
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl font-mono font-black text-[#00f0ff]">{game.fps || 85}</span>
@@ -170,7 +169,7 @@ export const GameDetailPage: React.FC = () => {
             </div>
 
             {/* Storage metric block */}
-            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-850 space-y-1">
+            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-800 space-y-1">
               <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest block">Storage Footprint size</span>
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl font-mono font-black text-fuchsia-400">{game.storageGB}</span>
@@ -186,7 +185,7 @@ export const GameDetailPage: React.FC = () => {
             </div>
 
             {/* CPU temperature core block */}
-            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-850 space-y-1">
+            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-800 space-y-1">
               <span className="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest">
                 <Flame className="w-3.5 h-3.5 text-rose-400" />
                 <span>CPU Core Temperature</span>
@@ -205,7 +204,7 @@ export const GameDetailPage: React.FC = () => {
             </div>
 
             {/* GPU temperature core block */}
-            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-850 space-y-1">
+            <div className="bg-slate-950/70 p-4 rounded-2xl border border-slate-800 space-y-1">
               <span className="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest">
                 <Flame className="w-3.5 h-3.5 text-amber-400" />
                 <span>GPU Core Temperature</span>
@@ -226,7 +225,7 @@ export const GameDetailPage: React.FC = () => {
           </div>
 
           {/* Graphics detailed settings configuration */}
-          <div className="bg-slate-950/40 p-5 rounded-2xl border border-slate-850 space-y-3">
+          <div className="bg-slate-950/40 p-5 rounded-2xl border border-slate-800 space-y-3">
             <div className="flex items-center gap-2">
               <Settings className="w-4 h-4 text-cyan-400" />
               <h4 className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest">Optimal Graphics Profile Setting</h4>
@@ -250,7 +249,7 @@ export const GameDetailPage: React.FC = () => {
           </div>
 
           {/* Quality Score circular frame */}
-          <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-850 flex flex-col items-center text-center space-y-2">
+          <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 flex flex-col items-center text-center space-y-2">
             <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest">CALCULATED VAULT RATING</span>
             <div className="flex items-center justify-center gap-2.5 bg-slate-900 border border-slate-800 py-3.5 px-6 rounded-2xl">
               <span className="text-2xl text-amber-400">★</span>
@@ -267,8 +266,8 @@ export const GameDetailPage: React.FC = () => {
           {/* Personal gaming notes block */}
           <div className="space-y-2.5">
             <span className="text-[9px] font-mono font-black text-slate-500 uppercase tracking-widest block">PERSONAL LOG ENTRY</span>
-            <div className="relative bg-slate-950 p-5 rounded-2xl border border-slate-850/80 border-l-[4px] border-l-[#00f0ff] min-h-[148px]">
-              <Quote className="absolute top-4 right-4 text-slate-850 w-10 h-10 pointer-events-none" />
+            <div className="relative bg-slate-950 p-5 rounded-2xl border border-slate-800/80 border-l-[4px] border-l-[#00f0ff] min-h-[148px]">
+              <Quote className="absolute top-4 right-4 text-slate-800 w-10 h-10 pointer-events-none" />
               <p className="text-xs text-slate-300 leading-relaxed italic font-sans font-medium relative z-10">
                 "{game.personalNotes || game.notes || "One of the best stealth games ever made. Every mission can be completed in dozens of different ways, making it highly replayable."}"
               </p>
@@ -276,7 +275,7 @@ export const GameDetailPage: React.FC = () => {
           </div>
 
           {/* Catalog Registry indicators */}
-          <div className="bg-slate-950/40 p-4 rounded-xl border border-slate-850/50 flex flex-col space-y-2.5 text-[10px] text-slate-400 font-mono">
+          <div className="bg-slate-950/40 p-4 rounded-xl border border-slate-800/50 flex flex-col space-y-2.5 text-[10px] text-slate-400 font-mono">
             <div className="flex items-center justify-between">
               <span className="text-slate-500 font-bold uppercase">ADDED TO HARDWARE VAULT:</span>
               <span className="text-slate-200 font-bold">{game.addedDate}</span>

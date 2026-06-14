@@ -284,7 +284,7 @@ export const AddGameModal: React.FC<AddGameModalProps> = ({ isOpen, onClose, ini
                     >
                       <img src={preset.url} alt={preset.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 pointer-events-none" />
                       <div className="absolute inset-0 bg-black/40 flex items-end justify-center py-0.5">
-                        <span className="text-[8px] font-mono tracking-tighter text-slate-350 truncate block px-1 w-full text-center bg-black/60">{preset.name}</span>
+                        <span className="text-[8px] font-mono tracking-tighter text-slate-300 truncate block px-1 w-full text-center bg-black/60">{preset.name}</span>
                       </div>
                     </button>
                   ))}
