@@ -6,7 +6,6 @@ import {
   Heart, 
   BarChart3, 
   Cpu, 
-  User, 
   Gamepad,
   Volume2,
   VolumeX,
@@ -68,14 +67,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           >
             {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4" />}
           </button>
-
-          {/* User profile capsule */}
-          <div className="flex items-center gap-2 bg-slate-900/60 border border-slate-805/60 py-1.5 px-3 rounded-xl">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-500 flex items-center justify-center font-bold text-xs text-white">
-              <User className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-xs font-mono font-bold text-slate-350 hidden sm:inline">PRO_PLAYER</span>
-          </div>
         </div>
       </header>
 
