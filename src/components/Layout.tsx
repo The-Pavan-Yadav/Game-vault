@@ -3,13 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Gamepad2, 
-  Heart, 
   BarChart3, 
-  Cpu, 
-  Gamepad,
-  Volume2,
-  VolumeX,
-  Plus
+  Gamepad
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -18,7 +13,6 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [soundOn, setSoundOn] = React.useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -63,18 +57,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
 
-        {/* Quick actions */}
-        <div className="flex items-center gap-3">
-          {/* Sound Toggle (immersive game flavor) */}
-          <button
-            onClick={() => setSoundOn(!soundOn)}
-            className="p-2 text-slate-400 hover:text-cyan-400 bg-slate-900/40 rounded-lg hover:bg-slate-800/50 border border-slate-800/80 transition-all cursor-pointer"
-            title={soundOn ? 'Mute Interface Sounds' : 'Enable Interface Sounds'}
-            id="sound-toggle-btn"
-          >
-            {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4" />}
-          </button>
-        </div>
+
       </header>
 
       {/* Main Wrapper */}
