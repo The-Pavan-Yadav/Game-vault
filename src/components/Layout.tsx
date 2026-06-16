@@ -60,10 +60,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-400 text-transparent bg-clip-text font-black tracking-wider text-xl md:text-2xl uppercase">
               GameVault
             </span>
-            <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono tracking-widest text-[#00f0ff] uppercase bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/30 w-fit mt-0.5">
-              <span>System: Online</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block" />
-            </div>
           </div>
         </div>
 
