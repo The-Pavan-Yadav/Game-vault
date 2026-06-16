@@ -229,6 +229,27 @@ export const games = [
     gpuTemp: '65°C',
     graphicsSettings: 'Extreme Preset (Ray Tracing Extreme)',
     personalNotes: 'Visually outstanding. Pushes our core engine thermal mechanics to their prime, maintaining an incredibly smooth 110 FPS.'
+  },
+  {
+    id: '12',
+    title: 'Forza Horizon 4',
+    name: 'Forza Horizon 4',
+    platform: 'PC',
+    status: 'backlog',
+    storageGB: 80,
+    rating: 9.4,
+    genre: 'Racing',
+    playtimeHours: 45,
+    releaseYear: 2018,
+    coverUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop',
+    notes: 'Experience dynamic seasons in a shared open world. Explore beautiful and historic Great Britain in over 450 cars with spectacular ultra-high fidelity graphics and customizable performance.',
+    isFavorite: false,
+    addedDate: '2026-06-16',
+    fps: 95,
+    cpuTemp: '64°C',
+    gpuTemp: '67°C',
+    graphicsSettings: 'Ultra Preset (MSAA 4x)',
+    personalNotes: 'An absolute masterpiece of a racing game. The changing seasons mechanic is fantastic, and the British scenery is beautifully realized.'
   }
 ];
 
