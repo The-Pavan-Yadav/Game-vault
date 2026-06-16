@@ -25,14 +25,14 @@ const GameDetailModal: React.FC<GameDetailModalProps> = ({ game, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.1 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm"
     >
       <motion.div 
         initial={{ scale: 0.95, y: 10, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.95, y: 10, opacity: 0 }}
-        transition={{ type: 'spring', damping: 28, stiffness: 450 }}
+        transition={{ type: 'spring', damping: 22, stiffness: 150 }}
         className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
       >
         {/* Design accents */}
@@ -196,7 +196,7 @@ export const MyGames: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.015
+        staggerChildren: 0.03
       }
     }
   };
@@ -208,8 +208,8 @@ export const MyGames: React.FC = () => {
       y: 0,
       transition: {
         type: 'spring',
-        stiffness: 450,
-        damping: 28
+        stiffness: 150,
+        damping: 20
       }
     }
   };
@@ -322,6 +322,7 @@ export const MyGames: React.FC = () => {
               onClick={() => setSelectedGame(game)}
               whileHover={{ y: -6, scale: 1.015 }}
               whileTap={{ scale: 0.985 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
             >
               {/* Cover Image Frame */}
               <div className="relative aspect-video w-full overflow-hidden shrink-0 bg-slate-950">

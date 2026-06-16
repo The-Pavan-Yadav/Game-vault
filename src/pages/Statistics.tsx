@@ -111,7 +111,7 @@ export const Statistics: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.015
+        staggerChildren: 0.03
       }
     }
   };
@@ -123,8 +123,8 @@ export const Statistics: React.FC = () => {
       y: 0,
       transition: {
         type: 'spring',
-        stiffness: 450,
-        damping: 28
+        stiffness: 150,
+        damping: 20
       }
     }
   };

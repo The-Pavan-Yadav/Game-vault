@@ -62,7 +62,7 @@ export const Dashboard: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.015
+        staggerChildren: 0.03
       }
     }
   };
@@ -74,8 +74,8 @@ export const Dashboard: React.FC = () => {
       y: 0,
       transition: {
         type: 'spring',
-        stiffness: 450,
-        damping: 28
+        stiffness: 150,
+        damping: 20
       }
     }
   };
@@ -123,7 +123,7 @@ export const Dashboard: React.FC = () => {
         {/* Metric Card: Total Games */}
         <motion.div 
           variants={itemVariants}
-          whileHover={{ y: -4, transition: { duration: 0.1 } }}
+          whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
           className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-violet-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-violet-950/20 transition-all duration-300"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-violet-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-violet-500/20" />
@@ -142,7 +142,7 @@ export const Dashboard: React.FC = () => {
         {/* Metric Card: Total Storage */}
         <motion.div 
           variants={itemVariants}
-          whileHover={{ y: -4, transition: { duration: 0.1 } }}
+          whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
           className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-cyan-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-cyan-950/20 transition-all duration-300"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-cyan-500/20" />
@@ -163,7 +163,7 @@ export const Dashboard: React.FC = () => {
         {/* Metric Card: Average Rating */}
         <motion.div 
           variants={itemVariants}
-          whileHover={{ y: -4, transition: { duration: 0.1 } }}
+          whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
           className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-amber-950/20 transition-all duration-300"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-amber-500/20" />
@@ -182,7 +182,7 @@ export const Dashboard: React.FC = () => {
         {/* Metric Card: Completed Games */}
         <motion.div 
           variants={itemVariants}
-          whileHover={{ y: -4, transition: { duration: 0.1 } }}
+          whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
           className="relative group overflow-hidden bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-fuchsia-500/40 rounded-2xl p-5 hover:shadow-lg hover:shadow-fuchsia-950/20 transition-all duration-300"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-fuchsia-500/10 to-transparent rounded-full filter blur-xl transition-all duration-300 group-hover:from-fuchsia-500/20" />
