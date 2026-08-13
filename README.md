@@ -1,2 +1,2 @@
-.....Game vault
+...Game vault
 ..
